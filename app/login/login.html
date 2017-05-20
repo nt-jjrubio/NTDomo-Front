@@ -9,7 +9,7 @@
 
     <md-input-container>
         <label>Usuario</label>
-        <input type="text"  ng-model="lgc.username">
+        <input type="text"  required ng-model="lgc.username">
       <!--  <div ng-messages="lgc.username.$error" ng-show="lgc.username.$dirty">
 
             <div ng-message="required">This is required!</div>
@@ -27,5 +27,19 @@
     <md-button type="submit" class="md-primary md-raised">
         Entrar
     </md-button>
+
+    <md-dialog aria-label="List dialog">
+        <md-dialog-content>
+            cacague
+           <!-- <md-list>
+              &lt;!&ndash;  <md-list-item ng-repeat="item in items">
+                    <p>Number {{item}}</p>
+                </md-list-item>&ndash;&gt;
+            </md-list>-->
+        </md-dialog-content>
+        <md-dialog-actions>
+            <md-button ng-click="closeDialog()" class="md-primary">Close Dialog</md-button>
+        </md-dialog-actions>
+    </md-dialog>
 
 </form>

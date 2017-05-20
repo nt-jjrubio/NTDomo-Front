@@ -1,1 +1,34 @@
-H0m33333
+    <div flex layout="column">
+        <md-toolbar md-whiteframe="3">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button md-button" type="button" ng-click="hm.openLeftMenu()"
+                           aria-label="Menu">
+                    <md-icon>menu</md-icon>
+                </md-button>
+                <h2 md-truncate flex>NTDomo</h2>
+                <!--  <md-button>
+                      Right Bar Button
+                  </md-button>-->
+            </div>
+        </md-toolbar>
+
+
+        <md-content layout-padding  style="min-height: calc(100vh - 80px)">
+            <md-sidenav md-component-id="left" class="" >
+
+                <h3>Dispositivos</h3>
+                <ul>
+                    <li ng-repeat="device in hm.devices"><i class="fa {{device.icon}}" aria-hidden="true"></i> {{device.name}}</li>
+
+                </ul>
+
+            </md-sidenav>
+
+
+            contenido
+        </md-content>
+
+
+
+    </div>
+

@@ -8,9 +8,14 @@ angular.module('NTDomo', [
     'NTDomo.home'
 
     ])
-    .config(['$locationProvider', '$routeProvider',
-    function ($locationProvider, $routeProvider) {
+    .config(['$locationProvider', '$routeProvider', '$mdThemingProvider',
+    function ($locationProvider, $routeProvider, $mdThemingProvider) {
         $locationProvider.hashPrefix('!');
+        //palete Lime or light-green
+        $mdThemingProvider.theme('default')
+            .primaryPalette('lime')
+            .accentPalette('light-green')
+            .dark();
         $routeProvider
             .when('/login', {
                 templateUrl: 'login/login.html',

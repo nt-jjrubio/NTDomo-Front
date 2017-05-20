@@ -18,10 +18,39 @@
         .module('NTDomo.home', [])
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$location'];
+    HomeController.$inject = ['$location', '$mdSidenav'];
 
     /* @ngInject */
-    function HomeController($location) {
+    function HomeController($location, $mdSidenav) {
+
+        var vm = this;
+
+        vm.openLeftMenu = function() {
+            console.log('open');
+          $mdSidenav('left').toggle();
+        };
+
+        vm.devices = [
+            {
+                'name':'Temperatura salon',
+                'address': '0x09',
+                'type':'temperature',
+                'icon':'fa-thermometer-half'
+            },
+            {
+                'name':'Temperatura Habitacion',
+                'address': '0x29',
+                'type':'temperature',
+                'icon':'fa-thermometer-half'
+            },
+            {
+                'name':'Luces exterior',
+                'address': '0x19',
+                'type':'temperature',
+                'icon':'fa-lightbulb-o'
+            }
+        ];
+
         /*   $('.main-background').slick({
          dots: true,
          infinite: true,
