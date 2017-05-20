@@ -1,0 +1,31 @@
+<h1>NTDomo</h1>
+<!--<form class="form-signin" novalidate ng-submit="$ctrl.login()">
+    <input type="text" id="inputUser" class="form-control login-input" placeholder="{{'LOGIN.USER'|translate}}" ng-model="$ctrl.email" autofocus="" >
+    <input type="password" id="inputPassword" class="form-control login-input" placeholder="{{'LOGIN.PASSWORD'|translate}}" ng-model="$ctrl.password">
+    <button class="btn btn-primary btn-block login-submit-button" type="submit">{{'LOGIN.BUTTON'|translate}}</button>
+</form>-->
+
+<form novalidate ng-submit="lgc.login()">
+
+    <md-input-container>
+        <label>Usuario</label>
+        <input type="text"  ng-model="lgc.username">
+      <!--  <div ng-messages="lgc.username.$error" ng-show="lgc.username.$dirty">
+
+            <div ng-message="required">This is required!</div>
+            <div ng-message="md-maxlength">That's too long!</div>
+            <div ng-message="minlength">That's too short!</div>
+        </div>-->
+
+
+    </md-input-container>
+
+    <md-input-container>
+        <label>Password</label>
+        <textarea ng-model="lgc.password"></textarea>
+    </md-input-container>
+    <md-button type="submit" class="md-primary md-raised">
+        Entrar
+    </md-button>
+
+</form>
