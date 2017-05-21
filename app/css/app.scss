@@ -5,6 +5,34 @@ body {
   height: 100%;
 }
 
+#loginIO {
+  font-size: 300px;
+  color: #62c462;
+  z-index: 1;
+  position: absolute;
+  right: 15%;
+  top: 30%;
+}
+
+#loginContainer {
+  position: absolute;
+  top:35%;
+  left:15%;
+  z-index: 100 !important;
+
+  #loginForm {
+
+    display: flex;
+    align-items: center;
+
+    md-input-container {
+      margin-bottom: 0;
+      margin-right: 10px;
+    }
+  }
+}
+
+
 md-sidenav {
   ul {
     padding: 0;
