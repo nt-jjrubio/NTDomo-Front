@@ -6,6 +6,33 @@
                     <md-icon>menu</md-icon>
                 </md-button>
                 <h2 md-truncate flex>NTDomo</h2>
+                <md-menu-bar>
+                    <md-menu >
+                        <!--<md-button aria-label="Open demo menu" class="md-icon-button" >-->
+                            <img ng-src="{{hm.userAvatar}}"  class="md-avatar" ng-click="$mdMenu.open($event)" alt="" />
+                        <!--</md-button>-->
+                        <md-menu-content width="3">
+                            <md-menu-item>
+                                <md-button ng-click="hm.openSettings()"> <i class="fa fa-cog"></i>Ajustes</md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="hm.logout()"> <i class="fa fa-sign-out"></i>Cerrar sesion</md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-menu-bar>
+<!-- <span md-menu-align-target>Option</span> {{item}} -->
+
+              <!--  <md-menu>
+
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button>
+                                Redial
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>-->
                 <!--  <md-button>
                       Right Bar Button
                   </md-button>-->
@@ -19,7 +46,6 @@
                 <h3>Dispositivos</h3>
                 <ul>
                     <li ng-repeat="device in hm.devices"><i class="fa {{device.icon}}" aria-hidden="true"></i> {{device.name}}</li>
-
                 </ul>
 
             </md-sidenav>
