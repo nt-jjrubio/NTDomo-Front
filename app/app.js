@@ -4,12 +4,14 @@
 angular.module('NTDomo', [
     'ngRoute',
     'ngMaterial',
+    'NTDomo.config',
+    'NTDomo.device.service',
     'NTDomo.login',
     'NTDomo.home'
 
     ])
-    .config(['$locationProvider', '$routeProvider', '$mdThemingProvider',
-    function ($locationProvider, $routeProvider, $mdThemingProvider) {
+    .config(['$locationProvider', '$routeProvider', '$mdThemingProvider', 'ENV',
+    function ($locationProvider, $routeProvider, $mdThemingProvider, ENV) {
         $locationProvider.hashPrefix('!');
         //palete Lime or light-green
         $mdThemingProvider.theme('default')
