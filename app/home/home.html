@@ -45,13 +45,23 @@
 
                 <h3>Dispositivos</h3>
                 <ul>
-                    <li ng-repeat="device in hm.devices" ng-click="hm.debug(device.name)"><i class="fa {{device.icon}}" aria-hidden="true"></i> {{device.name}}</li>
+                    <li ng-repeat="device in hm.devices" ng-click="hm.selected=device"><i class="fa {{device.icon}}" aria-hidden="true"></i> {{device.name}}</li>
                 </ul>
 
             </md-sidenav>
-
+            {{hm.selected}}
 
             contenido
+            <div ng-switch on="hm.selected.type">
+
+                <div ng-switch-when="temperature" >
+                    <div ng-include src="'../devices/templates/temperature/temperature.html'"
+                         ng-controller="TemperaturesController as tc"
+                         ng-init="tc.setDevice(hm.selected)"></div>
+                </div>
+
+
+            </div>
         </md-content>
 
 

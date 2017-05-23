@@ -52,6 +52,8 @@
                     break;
             }
         });
+
+        vm.selected = '';
         vm.debug = function(str){
             console.log(str);
         }

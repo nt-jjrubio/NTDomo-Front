@@ -14,7 +14,7 @@
   {
     "name":"Luces exterior",
     "address": "0x19",
-    "type":"temperature",
+    "type":"light",
     "icon":"fa-lightbulb-o"
   }
 ]
