@@ -52,7 +52,9 @@
                     break;
             }
         });
-
+        vm.debug = function(str){
+            console.log(str);
+        }
         vm.openLeftMenu = function() {
             console.log('open');
           $mdSidenav('left').toggle();

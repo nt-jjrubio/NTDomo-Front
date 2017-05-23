@@ -44,10 +44,20 @@ md-sidenav {
       border-bottom: solid 1px rgba(255, 255, 255, 0.2);
       padding: 10px;
       font-size: 13px;
+      cursor:pointer;
 
       .fa {
         padding: 10px;
         font-size: 2em;
+      }
+      &:hover {
+        background-color: #CDDC39;
+        color:#000;
+      }
+      &:active {
+        background-color: #acbb27;
+        color:#000;
+        border:none;
       }
 
     }
