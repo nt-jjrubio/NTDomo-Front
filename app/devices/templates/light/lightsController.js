@@ -22,6 +22,10 @@
             console.log('deviceSelected ', vm.device);
         });
 
+        vm.whatDevice = function(){
+            console.log("Device selected = ", vm.device);
+        }
+
     }
 
 
