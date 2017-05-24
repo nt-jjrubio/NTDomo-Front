@@ -57,7 +57,13 @@
                 <div ng-switch-when="temperature" >
                     <div ng-include src="'../devices/templates/temperature/temperature.html'"
                          ng-controller="TemperaturesController as tc"
-                         ng-init="tc.setDevice(hm.selected)"></div>
+                         ></div>
+                </div>
+
+                <div ng-switch-when="light" >
+                    <div ng-include src="'../devices/templates/light/light.html'"
+                         ng-controller="LightsController as lc"
+                    ></div>
                 </div>
 
 

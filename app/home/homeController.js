@@ -18,10 +18,10 @@
         .module('NTDomo.home', [])
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$location', '$mdSidenav', 'ENV', '$mdDialog', 'DeviceService'];
+    HomeController.$inject = ['$location', '$mdSidenav', 'ENV', '$mdDialog', 'DeviceService' ,'$rootScope'];
 
     /* @ngInject */
-    function HomeController($location, $mdSidenav, ENV, $mdDialog, DeviceService) {
+    function HomeController($location, $mdSidenav, ENV, $mdDialog, DeviceService, $rootScope) {
 
         var vm = this;
 
@@ -56,6 +56,10 @@
         vm.selected = '';
 
         vm.changeSelected = function(op){
+            //vm.selected = op;
+            console.log('rootScope change ->', op);
+            $rootScope.device = op;
+            $rootScope.$emit('deviceSelected', op );
             vm.selected = op;
         };
 

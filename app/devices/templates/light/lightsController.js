@@ -7,13 +7,13 @@
     'use strict';
     angular
         .module('NTDomo')
-        .controller('TemperaturesController', TemperaturesController);
+        .controller('LightsController', LightsController);
 
-    TemperaturesController.$inject = ['$rootScope'];
+    LightsController.$inject = ['$rootScope'];
 
-    function TemperaturesController($rootScope) {
+    function LightsController($rootScope) {
 
-        console.log("Entra en el controlador de temperaturas");
+        console.log("Entra en el controlador de luces");
         var vm = this;
         vm.device = $rootScope.device;
 
@@ -21,7 +21,6 @@
            vm.device = data;
             console.log('deviceSelected ', vm.device);
         });
-
 
     }
 
