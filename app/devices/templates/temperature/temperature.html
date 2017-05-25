@@ -1,31 +1,25 @@
-Temperaturas!
-{{tc.device}}
-<br>
-<button ng-click="tc.whatDevice()">What!</button>
-
-<div style="display: flex; justify-content: center">
-
-    <div style="display:flex; align-items: center; padding:30px; border: solid 5px #fff; margin:25px; border-radius:20px;  width:280px; text-align: center">
+<!--Temperaturas!-->
+<!--{{tc.device}}-->
+<!--<br>-->
+<!--<button ng-click="tc.whatDevice()">What!</button>-->
+<h1 style="text-align: center">{{tc.device.name}}</h1>
+<div class="blocksContainer">
+    <div class="block horizontalBlock">
         <div style="padding-right:20px;">
             <i style="font-size: 200px;" class="fa fa-thermometer-three-quarters" aria-hidden="true"></i>
         </div>
         <div style="font-size: 70px; font-weight: bold">
             40ºC
         </div>
-
+        {{tc.value}}
 
     </div>
-    <div style="padding:30px; border: solid 5px #fff; border-radius:20px; margin:25px;  width:280px; text-align: center;">
-        <div style="display: flex; flex-direction: column; align-items: center">
+    <div class="block verticalBlock">
+        <div>
             <i style="font-size:100px" class="fa fa-microchip" aria-hidden="true"></i>
-            <div style="text-align: center">
             <md-switch  ng-model="isActive" aria-label="Finished?">
                 Activado
             </md-switch>
-            </div>
         </div>
-
-
-
     </div>
 </div>
