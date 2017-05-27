@@ -6,6 +6,7 @@ angular.module('NTDomo', [
     'ngMaterial',
     'NTDomo.config',
     'NTDomo.device.service',
+    'NTDomo.i2cRequest.service',
     'NTDomo.login',
     'NTDomo.home'
 

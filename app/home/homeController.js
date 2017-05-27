@@ -28,7 +28,7 @@
 
 
 
-        /** Principles query **/
+        /** Devices query **/
 
         var query = {};
         if (ENV.env === 'dev') {
