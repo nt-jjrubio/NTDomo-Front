@@ -9,6 +9,7 @@
     function TemperaturesController($rootScope, $interval, I2CRequestService) {
         console.log('Entra en el controlador de temperaturas');
         var vm = this;
+        vm.switch = [];
         vm.reloadTime = 1000;
         vm.device = $rootScope.device;
         vm.refreshTimes = [500, 1000, 2000, 5000, 10000];
@@ -27,6 +28,7 @@
             console.log(vm.device);
             var query = {};
             query.dev = vm.device.address;
+            // 40 is command for read Analog PIN 0
             query.cmd = '40';
             /*if (ENV.env === 'dev') {
              //query.idA = '2';
@@ -63,16 +65,19 @@
 
 
         };
+        $interval(reloadQuery, vm.reloadTime);
 
-        var onOffSwitch = function (){
+        vm.onOffSwitch = function (){
             //vm.value++;
 
 
             /** Devices query **/
 
             var query = {};
-            query.dev = '0x08';
-            query.cmd = '0x02';
+            query.dev = vm.device.address;
+
+            // Command for digital pin 2
+            query.cmd = 102;
             /*if (ENV.env === 'dev') {
              //query.idA = '2';
              } else{
@@ -81,10 +86,9 @@
 
             I2CRequestService.query(query, function (data) {
 
-                console.log('Entra en el query');
-                vm.query = data;
+                vm.switch[0] = data.value;
 
-                console.log('Resultado', vm.query);
+                console.log('switchOnOff', vm.query);
             }, function (err) {
                 console.error(err);
                 //console.error('error!');
@@ -104,7 +108,8 @@
 
 
         };
-        $interval(reloadQuery, vm.reloadTime);
+
+
 
 
         vm.whatDevice = function(){
