@@ -1,8 +1,3 @@
-/**
- * @author Saul Llamas Parra
- * @author jjrubio
- * @since 04-04-2017
- */
 (function () {
     'use strict';
     angular
@@ -24,7 +19,7 @@
 
         vm.whatDevice = function(){
             console.log("Device selected = ", vm.device);
-        }
+        };
 
     }
 

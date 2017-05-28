@@ -1,13 +1,13 @@
 [
   {
     "name":"Temperatura salon",
-    "address": "0x09",
+    "address": "0x08",
     "type":"temperature",
     "icon":"fa-thermometer-half"
   },
   {
     "name":"Temperatura Habitacion",
-    "address": "0x29",
+    "address": "0x09 ",
     "type":"temperature",
     "icon":"fa-thermometer-half"
   },

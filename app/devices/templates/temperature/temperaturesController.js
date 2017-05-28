@@ -1,8 +1,3 @@
-/**
- * @author Saul Llamas Parra
- * @author jjrubio
- * @since 04-04-2017
- */
 (function () {
     'use strict';
     angular
@@ -25,6 +20,51 @@
 
         // Function to query
         var reloadQuery = function (){
+            //vm.value++;
+
+
+            /** Devices query **/
+            console.log(vm.device);
+            var query = {};
+            query.dev = vm.device.address;
+            query.cmd = '40';
+            /*if (ENV.env === 'dev') {
+             //query.idA = '2';
+             } else{
+             query.dev = '0x08';
+             }*/
+
+            I2CRequestService.query(query, function (data) {
+
+                console.log('Entra en el query');
+                vm.a0 = data;
+
+                vm.millivolts = (data.value / 1023.0) * 5000;
+                vm.celsius = vm.millivolts / 10;
+                vm.celsius = vm.celsius.toFixed(1);
+               /* console.log(vm.celsius); */
+                console.log('Resultado', vm.a0);
+            }, function (err) {
+                console.error(err);
+                //console.error('error!');
+                var msg = '';
+                switch (err.status) {
+                    case 404:
+                        msg = 'Error 404';//TranslationService.err404; '
+                        break;
+                    case 500:
+                        msg = 'Error 500'; //TranslationService.err500;
+                        break;
+                    default:
+                        msg = 'Error default'; //TranslationService.errDefault;
+                        break;
+                }
+            });
+
+
+        };
+
+        var onOffSwitch = function (){
             //vm.value++;
 
 
@@ -64,8 +104,6 @@
 
 
         };
-
-
         $interval(reloadQuery, vm.reloadTime);
 
 
