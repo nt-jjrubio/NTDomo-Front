@@ -6,10 +6,12 @@ angular.module('NTDomo', [
     'ngMaterial',
     'NTDomo.config',
     'NTDomo.device.service',
+    'NTDomo.newDevice.service',
     'NTDomo.i2cRequest.service',
     'NTDomo.login',
     'NTDomo.home',
-    'NTDomo.newDevice'
+    'NTDomo.newDeviceCtrl'
+
 
     ])
     .config(['$locationProvider', '$routeProvider', '$mdThemingProvider', 'ENV',

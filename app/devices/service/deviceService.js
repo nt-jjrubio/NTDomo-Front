@@ -1,7 +1,6 @@
-
-    'use strict';
-    angular.module('NTDomo.device.service', ['ngResource', 'NTDomo.config'])
-        .factory('DeviceService', DeviceService);
+'use strict';
+angular.module('NTDomo.device.service', ['ngResource', 'NTDomo.config'])
+    .factory('DeviceService', DeviceService);
 
     DeviceService.$inject = ['$resource', 'devices', 'ENV'];
     function DeviceService($resource, devices, ENV) {
@@ -18,4 +17,7 @@
 
         });
     }
+
+
+
 
