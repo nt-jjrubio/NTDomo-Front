@@ -3,5 +3,5 @@
  */
 
 'use strict';
-/*
-angular.module('NTDomo.device', ['NTDomo.device.service']);*/
+
+angular.module('NTDomo.device', ['NTDomo.device.service']);

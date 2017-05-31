@@ -6,7 +6,7 @@
     DeviceService.$inject = ['$resource', 'devices', 'ENV'];
     function DeviceService($resource, devices, ENV) {
         console.log('Device Query');
-        return $resource(devices.devices, {
+        return $resource(ENV.server + devices.devices, '@data', {
             query: {
                 method: 'GET',
                 isArray: true

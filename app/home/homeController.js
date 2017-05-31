@@ -91,6 +91,25 @@
             $location.path('/login');
         };
 
+        vm.showNewDevice = function(ev) {
+            $mdDialog.show({
+                controller: 'newDeviceController',
+                controllerAs: 'ndc',
+                templateUrl: '../devices/admin/device.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+                // fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+            });
+                /*.then(function(answer) {
+                    vm.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });*/
+        };
+
+
+
 
 
 

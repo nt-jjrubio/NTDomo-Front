@@ -1,10 +1,10 @@
 angular.module('NTDomo.config', [])
     .constant('ENV', {
-        'env': 'dev',
+        'env': 'prod',
         'server': 'http://192.168.2.190:3001/api/'
     })
     .constant('devices', {
-        'devices': 'devices/data/devices.json',
+        'devices': 'devices',
         'i2cRequest': 'i2cRequest/:dev/:cmd'
     });
 

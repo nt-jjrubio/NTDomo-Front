@@ -1,0 +1,38 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <i class="fa fa-microchip" aria-hidden="true" style="margin-right:15px"></i> <span
+                style="font-size: medium">Nuevo dispositivo</span>
+
+        </div>
+    </md-toolbar>
+    <md-dialog-content style="padding: 15px">
+        <div layout="row">
+            <md-input-container>
+                <label>Nombre</label>
+                <input type="text" required ng-model="ndc.device.name"></input>
+            </md-input-container>
+
+
+            <md-input-container>
+                <label>Direccion i2c</label>
+                <md-select ng-model="ndc.device.address" style="width: 100px;" layout="row" placeholder="Direccion" required md-no-asterisk="false">
+                    <md-option value="0x{{ad}}" ng-repeat="ad in ndc.address">0x{{ad}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>Tipo de dispositivo</label>
+                <md-select ng-model="ndc.device.type" layout="row" style="width: 180px;"  placeholder="Tipo de dispositivo" required md-no-asterisk="false">
+
+                    <md-option value="temperature">Temperatura</md-option>
+                    <md-option value="light">Iluminación</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <md-button class="md-primary md-raised"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</md-button>
+
+
+    </md-dialog-content>
+
+
+</md-dialog>

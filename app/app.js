@@ -8,7 +8,8 @@ angular.module('NTDomo', [
     'NTDomo.device.service',
     'NTDomo.i2cRequest.service',
     'NTDomo.login',
-    'NTDomo.home'
+    'NTDomo.home',
+    'NTDomo.newDevice'
 
     ])
     .config(['$locationProvider', '$routeProvider', '$mdThemingProvider', 'ENV',
