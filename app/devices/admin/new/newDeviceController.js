@@ -5,10 +5,10 @@
         .module('NTDomo.newDeviceCtrl', [])
         .controller('newDeviceController', newDeviceController);
 
-    newDeviceController.$inject = ['$location', 'ENV','$rootScope','NewDeviceService'];
+    newDeviceController.$inject = ['$location', '$rootScope','NewDeviceService', '$route', '$mdToast', '$mdDialog'];
 
     /* @ngInject */
-    function newDeviceController($location,  ENV,  $rootScope, NewDeviceService) {
+    function newDeviceController($location,   $rootScope, NewDeviceService, $route, $mdToast, $mdDialog) {
 
         var vm = this;
         console.log('Entra');
@@ -26,53 +26,45 @@
 
         }
         vm.device = {
-            'name':'Luces exterior',
-            'address': '0x19',
-            'type':'light',
-            'icon':'fa-lightbulb-o'
+            'name':'',
+            'address': '',
+            'type':'',
+            'icon':''
         };
         vm.save = function(){
-            /*
 
-             .post(query, vm.asset, function (data) {
-             console.log('data',data);
-             var source = {
-             'name':'',
-             'type': 1,
-             'id_asset':-1,
-             'id_parent':-1
-             };
-             source.name = data.name;
-             source.id_asset = data.id;
-             source.id_parent = idTreeNode;
-             $rootScope.$emit('newAsset',source);
-
-
-             cont = 0;
-             vm.clearForm();
-             }, function (err) {
-             console.log('err',err);
-             SweetAlert.swal({
-             title: '',
-             text: TranslationService.messageError + err.status,
-             customClass: 'csightAlert'
-             });
-             });
-             }
-             */
-
+            switch(vm.device.type)
+            {
+                case 'temperature':
+                    vm.device.icon = 'fa-thermometer-half';
+                    break;
+                case 'light':
+                    vm.device.icon = 'fa-lightbulb-o';
+                    break;
+            }
             NewDeviceService.post( vm.device, function (data) {
                 console.log(data);
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Dispositivo creado correctamente')
+                        .position('top right')
+                        .hideDelay(3000)
+                );
+                $mdDialog.cancel();
+                $route.reload();
+
 
             }, function (err) {
                 console.debug(err.message);
                 var msg = '';
                 switch (err.status) {
                     case 404:
+                        vm.error = '404 - No tienes permiso';
                         msg = 'Error 404';//TranslationService.err404; '
                         break;
                     case 500:
                         msg = 'Error 500'; //TranslationService.err500;
+                        vm.error = 'Parece que ya existe este dispositivo';
                         break;
                     default:
                         msg = 'Error default'; //TranslationService.errDefault;

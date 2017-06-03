@@ -28,9 +28,11 @@
                     <md-option value="light">Iluminación</md-option>
                 </md-select>
             </md-input-container>
+
         </div>
+        <div ng-if="ndc.error">{{ndc.error}}</div>
         <md-dialog-actions>
-        <md-button class="md-primary md-raised" ng-click="ndc.save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</md-button>
+        <md-button class="md-primary md-raised" ng-disabled='!ndc.device.name || !ndc.device.address || !ndc.device.type' ng-click="ndc.save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</md-button>
         </md-dialog-actions>
 
     </md-dialog-content>
