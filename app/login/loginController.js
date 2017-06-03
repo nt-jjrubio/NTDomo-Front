@@ -16,38 +16,54 @@
 
     angular
         .module('NTDomo.login', ['ngMaterial'])
-        .controller('LoginController', LoginController);
+        .controller('LoginController', LoginController)
+        .controller("SignUpController", SignUpController)
+        .controller("LogoutController", LogoutController);
 
-    LoginController.$inject = ['$location'];
+    LoginController.$inject = ['$location', '$auth'];
 
     /* @ngInject */
-    function LoginController($location) {
+    function LoginController($location, $auth) {
         var vm = this;
         vm.username = '';
         vm.password = '';
 
-        vm.login = function() {
-            console.log('username', vm.username);
-            console.log('password', vm.password);
+        if($auth.isAuthenticated())
+        {
             $location.path('/home');
+        }
+
+        vm.login = function() {
+            $auth.login({
+                username: vm.username,
+                password: vm.password
+            })
+                .then(function(){
+                    // Si se ha logueado correctamente, lo tratamos aquí.
+                    // Podemos también redirigirle a una ruta
+                    //console.log('Login OK')
+                    $location.path("/home")
+
+                })
+                .catch(function(response){
+                    // Si ha habido errores llegamos a esta parte
+                    console.log(response);
+                });
         };
 
-     /*   $('.main-background').slick({
-            dots: true,
-            infinite: true,
-            speed: 500,
-            fade: true,
-            cssEase: 'linear',
-            accessibility: false,
-            arrows: false,
-            autoplay: true,
-            autoplaySpeed: 3000,
-            pauseOnFocus: false,
-            pauseOnHover: false,
-            responsive: false,
-            respondTo: 'slider'
-        });*/
+
         console.log('LoginController');
     }
+
+    function SignUpController() {}
+
+    function LogoutController($auth, $location) {
+        $auth.logout()
+            .then(function() {
+
+                $location.path('/login')
+            });
+    }
+
 })();
 

@@ -10,18 +10,19 @@ angular.module('NTDomo', [
     'NTDomo.i2cRequest.service',
     'NTDomo.login',
     'NTDomo.home',
-    'NTDomo.newDeviceCtrl'
-
-
+    'NTDomo.newDeviceCtrl',
+    'satellizer'
     ])
-    .config(['$locationProvider', '$routeProvider', '$mdThemingProvider', 'ENV',
-    function ($locationProvider, $routeProvider, $mdThemingProvider, ENV) {
+    .config(['$locationProvider', '$routeProvider', '$mdThemingProvider', 'ENV', '$authProvider',
+    function ($locationProvider, $routeProvider, $mdThemingProvider, ENV, $authProvider) {
         $locationProvider.hashPrefix('!');
         //palete Lime or light-green
         $mdThemingProvider.theme('default')
             .primaryPalette('lime')
             .accentPalette('light-green')
             .dark();
+
+        // Assign routes
         $routeProvider
             .when('/login', {
                 templateUrl: 'login/login.html',
@@ -35,5 +36,12 @@ angular.module('NTDomo', [
             })
             .otherwise({redirectTo: '/login'});
 
+        // Config for satelliter authProvider
+        $authProvider.loginUrl = ENV.server + 'signin';
+        $authProvider.signupUrl = ENV.server + 'signup';
+        $authProvider.tokenName = 'token';
+        $authProvider.tokenPrefix = 'NTDomo';
+
+        console.log($authProvider.loginUrl);
         // $routeProvider.otherwise({redirectTo: '/view1'});
 }]);

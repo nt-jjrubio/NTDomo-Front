@@ -18,15 +18,17 @@
         .module('NTDomo.home', [])
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$location', '$mdSidenav', 'ENV', '$mdDialog', 'DeviceService' ,'$rootScope'];
+    HomeController.$inject = ['$location', '$mdSidenav', 'ENV', '$mdDialog', 'DeviceService' ,'$rootScope', '$auth'];
 
     /* @ngInject */
-    function HomeController($location, $mdSidenav, ENV, $mdDialog, DeviceService, $rootScope) {
+    function HomeController($location, $mdSidenav, ENV, $mdDialog, DeviceService, $rootScope, $auth) {
 
         var vm = this;
 
-
-
+        if(!$auth.isAuthenticated())
+        {
+            $location.path('/login');
+        }
 
         /** Devices query **/
 
@@ -87,6 +89,9 @@
         ];
 
         vm.logout = function() {
+
+            $auth.logout();
+
             console.log('Logout!');
             $location.path('/login');
         };
