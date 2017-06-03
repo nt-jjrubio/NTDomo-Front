@@ -20,37 +20,45 @@
         .controller("SignUpController", SignUpController)
         .controller("LogoutController", LogoutController);
 
-    LoginController.$inject = ['$location', '$auth'];
+    LoginController.$inject = ['$location', '$auth', '$mdToast'];
 
     /* @ngInject */
-    function LoginController($location, $auth) {
+    function LoginController($location, $auth, $mdToast) {
         var vm = this;
         vm.username = '';
         vm.password = '';
 
+        // Check if user is authenticated
         if($auth.isAuthenticated())
         {
             $location.path('/home');
         }
 
+        // AngularMaterial Toast (messages) position
+
+
+        // Function to login
         vm.login = function() {
             $auth.login({
                 username: vm.username,
                 password: vm.password
             })
+                // If response is OK redirect to /home
                 .then(function(){
-                    // Si se ha logueado correctamente, lo tratamos aquí.
-                    // Podemos también redirigirle a una ruta
-                    //console.log('Login OK')
                     $location.path("/home")
-
                 })
+                // If login fails
                 .catch(function(response){
-                    // Si ha habido errores llegamos a esta parte
                     console.log(response);
+ // .textContent('Usuario o password incorrecto')
+                    $mdToast.show({
+                        templateUrl: '../templates/toast/loginErrorToast.html',
+                        position: 'top right',
+                        hideDelay: 3000
+                    });
+
                 });
         };
-
 
         console.log('LoginController');
     }
@@ -58,9 +66,9 @@
     function SignUpController() {}
 
     function LogoutController($auth, $location) {
+        // Remove localStorage token and redirect to login
         $auth.logout()
             .then(function() {
-
                 $location.path('/login')
             });
     }
