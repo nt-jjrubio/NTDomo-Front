@@ -1,8 +1,10 @@
 <md-dialog>
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <i class="fa fa-microchip" aria-hidden="true" style="margin-right:15px"></i> <span
-                style="font-size: medium">Nuevo dispositivo</span>
+            <i class="fa fa-microchip"  aria-hidden="true" style="margin-right:15px"></i>
+            <h3  flex md-truncate>{{dc.title}}</h3>
+
+            <md-button class="md-icon-button" ng-click="dc.close()" style="float:right" ><i class="fa fa-times" aria-hidden="true"></i></md-button>
 
         </div>
     </md-toolbar>
@@ -10,19 +12,19 @@
         <div layout="row">
             <md-input-container>
                 <label>Nombre</label>
-                <input type="text" required ng-model="ndc.device.name"></input>
+                <input type="text" required ng-model="dc.device.name"></input>
             </md-input-container>
 
 
             <md-input-container>
                 <label>Direccion i2c</label>
-                <md-select ng-model="ndc.device.address" style="width: 100px;" layout="row" placeholder="Direccion" required md-no-asterisk="false">
-                    <md-option value="0x{{ad}}" ng-repeat="ad in ndc.address">0x{{ad}}</md-option>
+                <md-select ng-model="dc.device.address" style="width: 100px;" layout="row" placeholder="Direccion" required md-no-asterisk="false">
+                    <md-option value="0x{{ad}}" ng-repeat="ad in dc.address">0x{{ad}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container>
                 <label>Tipo de dispositivo</label>
-                <md-select ng-model="ndc.device.type" layout="row" style="width: 180px;"  placeholder="Tipo de dispositivo" required md-no-asterisk="false">
+                <md-select ng-model="dc.device.type" layout="row" style="width: 180px;"  placeholder="Tipo de dispositivo" required md-no-asterisk="false">
 
                     <md-option value="temperature">Temperatura</md-option>
                     <md-option value="light">Iluminación</md-option>
@@ -30,9 +32,10 @@
             </md-input-container>
 
         </div>
-        <div ng-if="ndc.error">{{ndc.error}}</div>
+        <div ng-if="dc.error">{{dc.error}}</div>
         <md-dialog-actions>
-        <md-button class="md-primary md-raised" ng-disabled='!ndc.device.name || !ndc.device.address || !ndc.device.type' ng-click="ndc.save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</md-button>
+            <md-button ng-if="dc.deleteAllowed" class="md-warn md-raised" ng-disabled='!dc.device.name || !dc.device.address || !dc.device.type' ng-click="dc.save()"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</md-button>
+            <md-button class="md-primary md-raised" ng-disabled='!dc.device.name || !dc.device.address || !dc.device.type' ng-click="dc.save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</md-button>
         </md-dialog-actions>
 
     </md-dialog-content>

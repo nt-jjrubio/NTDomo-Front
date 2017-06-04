@@ -13,6 +13,8 @@
         var vm = this;
         console.log('Entra');
         vm.address = [];
+        vm.title = 'Nuevo dispositivo';
+        vm.deleteAllowed = false;
 
         for (var i=2; i<256; i++){
             var add = '';
@@ -25,6 +27,12 @@
             vm.address.push(add);
 
         }
+
+        vm.close = function()
+        {
+            $mdDialog.cancel();
+        };
+
         vm.device = {
             'name':'',
             'address': '',

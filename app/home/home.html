@@ -45,6 +45,7 @@
                 <md-button style="position:absolute; right: 10px;" class="md-fab md-mini md-primary" ng-click="hm.showNewDevice($event)">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                 </md-button>
+
                 <h3>Dispositivos  </h3>
 
 
@@ -59,6 +60,7 @@
             <div ng-switch on="hm.selected.type">
 
                 <div ng-switch-when="temperature" >
+                    <md-button style="position:absolute;top:15px; right:15px; font-size: 1.2em" class="md-fab md-primary" ng-click="hm.showModifyDevice($event)"><i class="fa fa-pencil" aria-hidden="true"></i></md-button>
                     <div ng-include src="'../devices/templates/temperature/temperature.html'"
                          ng-controller="TemperaturesController as tc"
                          ></div>
