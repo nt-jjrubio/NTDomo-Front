@@ -14,6 +14,7 @@ angular.module('NTDomo', [
     'NTDomo.home',
     'NTDomo.newDeviceCtrl',
     'NTDomo.modifyDeviceCtrl',
+    'NTDomo.systemSettingsCtrl',
     'satellizer'
     ])
     .config(['$locationProvider', '$routeProvider', '$mdThemingProvider', 'ENV', '$authProvider',

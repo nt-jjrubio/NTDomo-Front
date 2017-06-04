@@ -1,0 +1,22 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <i class="fa fa-terminal"  aria-hidden="true" style="margin-right:15px"></i>
+            <h3  flex md-truncate>Opciones del sistema</h3>
+
+            <md-button class="md-icon-button" ng-click="ssc.close()" style="float:right" ><i class="fa fa-times" aria-hidden="true"></i></md-button>
+
+        </div>
+    </md-toolbar>
+    <md-dialog-content style="padding: 15px">
+        <div layout="row">
+
+        <md-dialog-actions>
+            <md-button class="md-primary md-raised" ng-click="ssc.reboot()"><i class="fa fa-refresh" aria-hidden="true"></i> Reiniciar sistema</md-button>
+            <md-button class="md-warn md-raised" ng-click="ssc.shutdown()"><i class="fa fa-power-off" aria-hidden="true"></i> Apagar sistema</md-button>
+        </md-dialog-actions>
+
+    </md-dialog-content>
+
+
+</md-dialog>

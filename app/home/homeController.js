@@ -74,7 +74,7 @@
         };
 
         // UserAvatar options
-        vm.userOptions = [
+        /*vm.userOptions = [
             {
                 'label' : 'Ajustes',
                 'icon' : 'fa fa-cog',
@@ -85,7 +85,7 @@
                 'icon' : 'fa fa-sign-out',
                 'action' : 'logout'
             }
-        ];
+        ];*/
 
         vm.logout = function() {
 
@@ -110,6 +110,23 @@
                 }, function() {
                     $scope.status = 'You cancelled the dialog.';
                 });*/
+        };
+
+        vm.showSystemSettings = function(ev) {
+            $mdDialog.show({
+                controller: 'systemSettingsController',
+                controllerAs: 'ssc',
+                templateUrl: '../system/settings/systemSettings.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+                // fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+            });
+            /*.then(function(answer) {
+             vm.status = 'You said the information was "' + answer + '".';
+             }, function() {
+             $scope.status = 'You cancelled the dialog.';
+             });*/
         };
 
         vm.showModifyDevice = function(ev) {

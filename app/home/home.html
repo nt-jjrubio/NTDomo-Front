@@ -13,10 +13,14 @@
                         <!--</md-button>-->
                         <md-menu-content width="3">
                             <md-menu-item>
-                                <md-button ng-click="hm.openSettings()"> <i class="fa fa-cog"></i>Ajustes</md-button>
+                                <md-button ng-click="hm.openSettings()"> <i class="fa fa-cog"></i> Ajustes</md-button>
                             </md-menu-item>
                             <md-menu-item>
-                                <md-button ng-click="hm.logout()"> <i class="fa fa-sign-out"></i>Cerrar sesion</md-button>
+                                <md-button ng-click="hm.showSystemSettings()"> <i class="fa fa-terminal"></i> Sistema</md-button>
+                            </md-menu-item>
+                            <md-divider ></md-divider>
+                            <md-menu-item>
+                                <md-button ng-click="hm.logout()"> <i class="fa fa-sign-out"></i> Cerrar sesion</md-button>
                             </md-menu-item>
                         </md-menu-content>
                     </md-menu>
