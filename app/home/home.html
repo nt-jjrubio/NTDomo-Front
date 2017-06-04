@@ -71,6 +71,8 @@
                 </div>
 
                 <div ng-switch-when="light" >
+                    <md-button style="position:absolute;top:15px; right:15px; font-size: 1.2em" class="md-fab md-primary" ng-click="hm.showModifyDevice($event)"><i class="fa fa-pencil" aria-hidden="true"></i></md-button>
+
                     <div ng-include src="'../devices/templates/light/light.html'"
                          ng-controller="LightsController as lc"
                     ></div>
