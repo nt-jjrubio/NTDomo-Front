@@ -6,6 +6,8 @@ angular.module('NTDomo.config', [])
     .constant('devices', {
         'devices': 'devices',
         'newDevice': 'newDevice',
+        'deleteDevice': 'deleteDevice/:dev',
+        'modifyDevice': 'modifyDevice',
         'i2cRequest': 'i2cRequest/:dev/:cmd'
     });
 

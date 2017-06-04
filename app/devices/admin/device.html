@@ -34,7 +34,7 @@
         </div>
         <div ng-if="dc.error">{{dc.error}}</div>
         <md-dialog-actions>
-            <md-button ng-if="dc.deleteAllowed" class="md-warn md-raised" ng-disabled='!dc.device.name || !dc.device.address || !dc.device.type' ng-click="dc.save()"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</md-button>
+            <md-button ng-if="dc.deleteAllowed" class="md-warn md-raised" ng-disabled='!dc.device.name || !dc.device.address || !dc.device.type' ng-click="dc.delete()"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</md-button>
             <md-button class="md-primary md-raised" ng-disabled='!dc.device.name || !dc.device.address || !dc.device.type' ng-click="dc.save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</md-button>
         </md-dialog-actions>
 

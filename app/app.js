@@ -7,6 +7,8 @@ angular.module('NTDomo', [
     'NTDomo.config',
     'NTDomo.device.service',
     'NTDomo.newDevice.service',
+    'NTDomo.modifyDevice.service',
+    'NTDomo.deleteDevice.service',
     'NTDomo.i2cRequest.service',
     'NTDomo.login',
     'NTDomo.home',

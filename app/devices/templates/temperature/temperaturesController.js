@@ -22,7 +22,7 @@
         vm.value=0;
         // Function to get switch status
         vm.switchStatus = function (){
-            console.log('entra en la consulta?');
+            //console.log('entra en la consulta?');
 
             var query = {};
             query.dev = vm.device.address;
@@ -94,17 +94,17 @@
              }*/
 
             I2CRequestService.query(query, function (data) {
-                console.log('Entra en el query');
+                //console.log('Entra en el query');
                 vm.a0 = data;
 
                 vm.millivolts = (data.value / 1023.0) * 5000;
                 vm.celsius = vm.millivolts / 10;
                 vm.celsius = vm.celsius.toFixed(1);
 
-                console.log('Resultado', vm.a0);
+                //console.log('Resultado', vm.a0);
                 vm.error = false;
             }, function (err) {
-                console.error(err);
+                
                 if(!vm.error)
                 {
                     $mdDialog.show(
@@ -140,7 +140,7 @@
              }*/
             I2CRequestService.query(query, function (data) {
                 // If has an error with arduino comunication API returns error message
-                console.log('data', data.status);
+                //console.log('data', data.status);
 
                 if(data.value){
                     vm.switch[0] = true;

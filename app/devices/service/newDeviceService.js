@@ -8,9 +8,6 @@ function NewDeviceService($resource, newDevice, ENV) {
     return $resource(ENV.server + newDevice.newDevice, '@data', {
         post: {
             method: 'POST'
-        },
-        put: {
-            method: 'PUT'
         }
     });
 }

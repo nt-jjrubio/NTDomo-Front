@@ -5,10 +5,12 @@
         .module('NTDomo.modifyDeviceCtrl', [])
         .controller('modifyDeviceController', modifyDeviceController);
 
-    modifyDeviceController.$inject = ['$location', '$rootScope', '$route', '$mdToast', '$mdDialog'];
+    modifyDeviceController.$inject = ['$location', '$rootScope', '$route', '$mdToast',
+        '$mdDialog', 'ModifyDeviceService', 'DeleteDeviceService'];
 
     /* @ngInject */
-    function modifyDeviceController($location,   $rootScope, $route, $mdToast, $mdDialog) {
+    function modifyDeviceController($location, $rootScope, $route, $mdToast, $mdDialog,
+                                    ModifyDeviceService, DeleteDeviceService) {
 
         var vm = this;
         console.log('Entra');
@@ -40,7 +42,7 @@
             'type': selectedDevice.type,
             'icon': selectedDevice.icon
         };
-        /*vm.save = function(){
+        vm.save = function(){
 
             switch(vm.device.type)
             {
@@ -51,11 +53,11 @@
                     vm.device.icon = 'fa-lightbulb-o';
                     break;
             }
-            NewDeviceService.post( vm.device, function (data) {
+            ModifyDeviceService.post( vm.device, function (data) {
                 console.log(data);
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Dispositivo creado correctamente')
+                        .textContent('Dispositivo modificado correctamente')
                         .position('top right')
                         .hideDelay(3000)
                 );
@@ -80,7 +82,48 @@
                         break;
                 }
             });
-        };*/
+        };
+
+        vm.delete = function(){
+
+            vm.device = {
+                'dev':  selectedDevice.address
+            };
+            DeleteDeviceService.delete( vm.device, function (data) {
+                console.log('deviceDelete data', data);
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Dispositivo eliminado correctamente')
+                        .position('top right')
+                        .hideDelay(3000)
+                );
+
+                    $mdDialog.cancel();
+                    $route.reload();
+
+
+
+
+            }, function (err) {
+                console.debug(err.message);
+                var msg = '';
+                switch (err.status) {
+                    case 404:
+                        console.log(err);
+                        vm.error = '404 - No tienes permiso';
+                        msg = 'Error 404';//TranslationService.err404; '
+                        break;
+                    case 500:
+                        msg = 'Error 500'; //TranslationService.err500;
+                        vm.error = err.message;
+                        break;
+                    default:
+                        msg = 'Error default'; //TranslationService.errDefault;
+                        break;
+                }
+            });
+        };
     }
 
 
