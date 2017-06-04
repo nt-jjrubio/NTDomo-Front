@@ -11,7 +11,7 @@
         var vm = this;
         vm.switch = [];
         vm.error = false;
-        vm.reloadTime = 1000;
+        vm.reloadTime = 2000;
         vm.device = $rootScope.device;
         vm.refreshTimes = [500, 1000, 2000, 5000, 10000];
         $rootScope.$on('deviceSelected', function (event, data) {
@@ -22,7 +22,7 @@
         vm.value=0;
         // Function to get switch status
         vm.switchStatus = function (){
-           // console.log('entra en la consulta?');
+            //console.log('entra en la consulta?');
 
             var query = {};
             query.dev = vm.device.address;
@@ -96,15 +96,16 @@
             I2CRequestService.query(query, function (data) {
                 console.log('Entra en el query');
                 vm.a0 = data;
+                // TODO: 128 -> 255
 
-                // TODO: Cambiar valores
-                vm.millivolts = (data.value / 1023.0) * 5000;
-                vm.celsius = vm.millivolts / 10;
-                vm.celsius = vm.celsius.toFixed(1);
+                vm.a0value =   parseInt((100/128)*data.value);
+                if(vm.a0value > 99){
+                    vm.a0value = 100;
+                }
                 console.log('Resultado', vm.a0);
                 vm.error = false;
             }, function (err) {
-                console.error(err);
+
                 if(!vm.error)
                 {
                     $mdDialog.show(
@@ -140,7 +141,7 @@
              }*/
             I2CRequestService.query(query, function (data) {
                 // If has an error with arduino comunication API returns error message
-                console.log('data', data.status);
+                //console.log('data', data.status);
 
                 if(data.value){
                     vm.switch[0] = true;

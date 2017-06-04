@@ -11,7 +11,7 @@
         var vm = this;
         vm.switch = [];
         vm.error = false;
-        vm.reloadTime = 1000;
+        vm.reloadTime = 2000;
         vm.device = $rootScope.device;
         vm.refreshTimes = [500, 1000, 2000, 5000, 10000];
         $rootScope.$on('deviceSelected', function (event, data) {

@@ -1,20 +1,19 @@
-<!--Temperaturas!-->
 
-<h1 style="text-align: center">{{tc.device.name}}</h1>
+<h1 style="text-align: center">{{lc.device.name}}</h1>
 <div class="blocksContainer">
     <div class="block horizontalBlock">
         <div style="padding-right:20px;">
             <i style="font-size: 200px;" class="fa fa-lightbulb-o" aria-hidden="true"></i>
         </div>
         <div style="font-size: 70px; font-weight: bold">
-
+            {{lc.a0value}}%
         </div>
 
     </div>
     <div class="block verticalBlock">
         <div>
             <i style="font-size:100px" class="fa fa-microchip" aria-hidden="true"></i>
-            <md-switch ng-change="tc.onOffSwitch()" ng-model="tc.switch[0]" aria-label="Finished?">
+            <md-switch ng-change="lc.onOffSwitch()" ng-model="lc.switch[0]" aria-label="Finished?">
                 Activado
             </md-switch>
         </div>
