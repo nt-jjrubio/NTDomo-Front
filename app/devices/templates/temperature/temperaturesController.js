@@ -94,14 +94,14 @@
              }*/
 
             I2CRequestService.query(query, function (data) {
-                //console.log('Entra en el query');
+                console.log('Entra en el query');
                 vm.a0 = data;
 
                 vm.millivolts = (data.value / 1023.0) * 5000;
                 vm.celsius = vm.millivolts / 10;
                 vm.celsius = vm.celsius.toFixed(1);
 
-                //console.log('Resultado', vm.a0);
+                console.log('Resultado', vm.a0);
                 vm.error = false;
             }, function (err) {
                 

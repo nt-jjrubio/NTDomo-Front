@@ -5,10 +5,10 @@
         .module('NTDomo.systemSettingsCtrl', [])
         .controller('systemSettingsController', systemSettingsController);
 
-    systemSettingsController.$inject = ['$location', '$rootScope', '$mdToast', '$mdDialog'];
+    systemSettingsController.$inject = ['$location', '$rootScope', '$mdToast', '$mdDialog', '$http', 'ENV'];
 
     /* @ngInject */
-    function systemSettingsController($location, $rootScope,  $mdToast, $mdDialog) {
+    function systemSettingsController($location, $rootScope,  $mdToast, $mdDialog, $http, ENV) {
 
         var vm = this;
 
@@ -28,13 +28,15 @@
             );
             $http({
                 method: 'GET',
-                url: '/api/reboot'
+                url: ENV.server +'reboot'
             }).then(function successCallback(response) {
                 // this callback will be called asynchronously
-                // when the response is available
+                console.log(response);
             }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
+                console.log('err',response);
+
             });
 
         };
@@ -50,7 +52,7 @@
 
             $http({
                 method: 'GET',
-                url: '/api/shutdown'
+                url: ENV.server +'shutdown'
             }).then(function successCallback(response) {
                 // this callback will be called asynchronously
                 // when the response is available
